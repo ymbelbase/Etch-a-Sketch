@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+     background-color: #F8FFF4;
+     margin: 0;
+     padding: 0;
+     max-height: 100vh;
+     color: #FCFFEB;
+     font-family: Roboto,'Times New Roman', Times, serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.top{
+    background-color: #4E6E58;
+    padding:30px;
+    margin-bottom: 30px;
+    font-size: 42px;
+    text-align: center;
+    font-weight: 800;
+}
+.mid{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 100px 0px;
+    gap:40px;
+    align-self: center;
+}
+
+.left.box{
+    box-sizing: content-box;
+    height: 500px;
+    width:500px;
+    margin: 40px;
+    border:black solid 3px;
+}
+
+.right.menu{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    align-self: center;
+    gap: 10px;
+    
+}
+
+.bottom{
+    background-color: #4E6E58;
+    padding: 8px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: 700;
+}
+
+button{
+    border-radius: 8px;
+    border: 2px solid black;
+    color: black;
+    padding: 2px 0px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-grow: 0;
+}
+
+.color{
+    width: 100px;
+    height: 50px; 
+    border-radius: 30%;
+    overflow: hidden;
+    border: white solid 3px;
+    padding:0;
+    align-self: center;   
+}
+
+.glider{
+
+}
