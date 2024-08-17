@@ -83,9 +83,6 @@ button{
     cursor: pointer;
 }
 
-.glider{
-    
-}
 
 #sizeValue{
     color: black;
@@ -96,5 +93,6 @@ button{
 }
 
 .ok {
-        background-color: #ccc; /* Just for visibility */ /* Optional border for visibility */
+        background-color: #ccc; 
+        cursor: pointer;
 }

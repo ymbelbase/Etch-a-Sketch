@@ -6,9 +6,10 @@ const glider = document.querySelector('#glider');
 const sizeValue = document.querySelector('#sizeValue');
 const leftBox = document.querySelector('.left.box');
 const s = document.querySelector('#sizeValue');
+let currentMode = 'sketch';
 
 
-
+updateSquareDiv(5);
 function updateGlider(){
     currentRange = glider.value;
     sizeValue.textContent = `${currentRange} x ${currentRange}`;
@@ -24,8 +25,28 @@ console.log(defaultRange);//////////////////////////////
 let currentRange = defaultRange;
 
 glider.addEventListener("input",updateGlider);
+clear.addEventListener("click", setDefault);
+
+sketch.addEventListener("click", () => {
+    // Add event listener to leftBox for sketching
+    currentMode = 'sketch';
+    leftBox.addEventListener("mouseover", (event) => {
+        if (event.target.classList.contains('ok')) {
+            event.target.style.backgroundColor = "black";
+        }
+    });
+});
+erase.addEventListener("click",(event)=>{
+    currentMode = 'erase';
+    leftBox.addEventListener("mouseover", (event) => {
+        if (event.target.classList.contains('ok')) {
+            event.target.style.backgroundColor = "#ccc";
+        }
+    });
+})
 
 
+//update the square pixels in sketch button
 function updateSquareDiv(iteration){
     if(iteration <= 0){
         leftBox.innerHTML = '';
@@ -44,6 +65,14 @@ function updateSquareDiv(iteration){
                 leftBox.appendChild(div);
             }
     }
+}
+
+
+
+function setDefault() {
+    glider.value = defaultRange; // Reset glider value
+    sizeValue.textContent = `${defaultRange} x ${defaultRange}`;
+    updateSquareDiv(defaultRange);
 }
 
 
