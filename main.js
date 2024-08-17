@@ -6,68 +6,74 @@ const glider = document.querySelector('#glider');
 const sizeValue = document.querySelector('#sizeValue');
 const leftBox = document.querySelector('.left.box');
 const s = document.querySelector('#sizeValue');
+const color = document.querySelector('.color');
 let currentMode = 'sketch';
 
-
+// Initialize the grid
 updateSquareDiv(5);
-function updateGlider(){
+
+function updateGlider() {
     currentRange = glider.value;
     sizeValue.textContent = `${currentRange} x ${currentRange}`;
-    console.log(currentRange);
-    
     updateSquareDiv(currentRange);
-    console.log(`Updating grid with ${currentRange}`);
 }
-
-//range selection
+ 
+// Range selection
 let defaultRange = glider.value;
-console.log(defaultRange);//////////////////////////////
 let currentRange = defaultRange;
 
-glider.addEventListener("input",updateGlider);
+// Color selection
+let colorValue = color.value;
+console.log(colorValue);
+
+glider.addEventListener("input", updateGlider);
 clear.addEventListener("click", setDefault);
+color.addEventListener("input", updateColor)
+
+// Mouseover event listener on leftBox
+leftBox.addEventListener("mouseover", (event) => {
+    if (event.target.classList.contains('ok')) {
+        if (currentMode === 'sketch') {
+            event.target.style.backgroundColor = colorValue;
+        } else if (currentMode === 'erase') {
+            event.target.style.backgroundColor = "#ccc";
+        } else if (currentMode === 'rainbow') {
+            event.target.style.backgroundColor = getRandomColor();
+        }
+    }
+});
 
 sketch.addEventListener("click", () => {
-    // Add event listener to leftBox for sketching
     currentMode = 'sketch';
-    leftBox.addEventListener("mouseover", (event) => {
-        if (event.target.classList.contains('ok')) {
-            event.target.style.backgroundColor = "black";
-        }
-    });
 });
-erase.addEventListener("click",(event)=>{
+
+erase.addEventListener("click", () => {
     currentMode = 'erase';
-    leftBox.addEventListener("mouseover", (event) => {
-        if (event.target.classList.contains('ok')) {
-            event.target.style.backgroundColor = "#ccc";
-        }
-    });
-})
+});
 
+rainbow.addEventListener("click", () => {
+    currentMode = 'rainbow';
+});
 
-//update the square pixels in sketch button
-function updateSquareDiv(iteration){
-    if(iteration <= 0){
+// Update the square pixels in sketch button
+function updateSquareDiv(iteration) {
+    if (iteration <= 0) {
         leftBox.innerHTML = '';
-    return;
+        return;
     }
 
-        const itemSize = 500/iteration;
-        leftBox.innerHTML ='';
-        for (let i = 0; i < iteration; i++) {
-            // Inner loop for columns
-            for (let j = 0; j < iteration; j++) {
-                const div = document.createElement('div');
-                div.style.width = `${itemSize}px`;  // Set width
-                div.style.height = `${itemSize}px`; // Set height
-                div.classList.add('ok');
-                leftBox.appendChild(div);
-            }
+    const itemSize = 500 / iteration;
+    leftBox.innerHTML = '';
+    for (let i = 0; i < iteration; i++) {
+        for (let j = 0; j < iteration; j++) {
+            const div = document.createElement('div');
+            div.style.width = `${itemSize}px`;
+            div.style.height = `${itemSize}px`;
+            div.classList.add('ok');
+            leftBox.appendChild(div);
+        }
     }
 }
-
-
 
 function setDefault() {
     glider.value = defaultRange; // Reset glider value
@@ -75,4 +81,17 @@ function setDefault() {
     updateSquareDiv(defaultRange);
 }
 
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
+function updateColor()
+{
+    colorValue = color.value;
+    console.log(colorValue);
+}
