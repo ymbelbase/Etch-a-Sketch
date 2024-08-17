@@ -29,15 +29,20 @@ body{
     margin: 100px 0px;
     gap:40px;
     align-self: center;
+    box-sizing: content-box;
 }
 
 .left.box{
-    box-sizing: content-box;
     height: 500px;
     width:500px;
     margin: 40px;
     border:black solid 3px; 
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
+
+
 
 .right.menu{
     display: flex;
@@ -88,4 +93,8 @@ button{
     padding-top: 20px;
     font-size: 22px;
     font-weight: 700;
+}
+
+.ok {
+        background-color: #ccc; /* Just for visibility */ /* Optional border for visibility */
 }
