@@ -36,7 +36,7 @@ body{
     height: 500px;
     width:500px;
     margin: 40px;
-    border:black solid 3px;
+    border:black solid 3px; 
 }
 
 .right.menu{
@@ -45,7 +45,6 @@ body{
     margin: 40px;
     align-self: center;
     gap: 10px;
-    
 }
 
 .bottom{
@@ -58,9 +57,9 @@ body{
 
 button{
     border-radius: 8px;
-    border: 2px solid black;
+    border: 1.5px solid black;
     color: black;
-    padding: 2px 0px;
+    padding: 10px 10px;
     margin-top: 10px;
     font-size: 16px;
     font-weight: 600;
@@ -76,8 +75,17 @@ button{
     border: white solid 3px;
     padding:0;
     align-self: center;   
+    cursor: pointer;
 }
 
 .glider{
+    
+}
 
+#sizeValue{
+    color: black;
+    align-self: center;
+    padding-top: 20px;
+    font-size: 22px;
+    font-weight: 700;
 }
